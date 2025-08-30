@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     startyear: DataTypes.INTEGER,
     endyear: DataTypes.INTEGER,
     runtimeminutes: DataTypes.INTEGER,
-    genres: DataTypes.STRING
+    genres: DataTypes.STRING,
   }, {
     tableName: "title_basics",
     timestamps: false

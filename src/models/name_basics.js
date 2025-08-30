@@ -4,8 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     primaryname: DataTypes.STRING,
     birthyear: DataTypes.INTEGER,
     deathyear: DataTypes.INTEGER,
-    primaryprofession: DataTypes.STRING, // comma-separated
-    knownfortitles: DataTypes.STRING     // comma-separated
+    primaryprofession: DataTypes.STRING,
+    knownfortitles: DataTypes.STRING,
   }, {
     tableName: "name_basics",
     timestamps: false
