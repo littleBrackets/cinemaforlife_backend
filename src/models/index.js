@@ -1,16 +1,16 @@
 const { Sequelize, DataTypes } = require("sequelize");
-const {DB_HOST, DB_NAME, DB_PASS, DB_USER} = require("../config/database");
+const { DB_HOST, DB_NAME, DB_PASS, DB_USER } = require("../config/database");
+const logger = require("../utils/logger");
 
-const sequelize = new Sequelize(
-  DB_NAME,
-  DB_USER,
-  DB_PASS,
-  {
-    host: DB_HOST,
-    dialect: 'postgres',
-    logging: false,
-  }
-);
+const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASS, {
+  host: DB_HOST,
+  dialect: "postgres",
+  logging: (msg, timing) => {
+    // msg: the SQL query
+    // timing: time in ms if benchmark: true
+    logger.info("Sequelize query", { sql: msg, duration: timing });
+  },
+});
 
 // Import models
 const title_basics = require("./title_basics")(sequelize, DataTypes);
@@ -59,5 +59,5 @@ module.exports = {
   Episode: title_episode,
   Principal: title_principals,
   Rating: title_ratings,
-  Person: name_basics
+  Person: name_basics,
 };
