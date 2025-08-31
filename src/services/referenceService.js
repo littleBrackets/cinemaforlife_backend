@@ -13,7 +13,7 @@ async function getMovieTypes(requestId) {
 
   const types = await Movie.findAll({ attributes: ["titleType"], group: ["titleType"] });
   await cache.set(key, types, TTL_LONG);
-  logger.info("Cached movieTypes", { requestId });
+  // logger.info("Cached movieTypes", { requestId });
   return types;
 }
 
@@ -24,7 +24,7 @@ async function getRegions(requestId) {
 
   const regions = await Aka.findAll({ attributes: ["region"], group: ["region"] });
   await cache.set(key, regions, TTL_LONG);
-  logger.info("Cached regions", { requestId });
+  // logger.info("Cached regions", { requestId });
   return regions;
 }
 
@@ -35,7 +35,7 @@ async function getLanguages(requestId) {
 
   const languages = await Aka.findAll({ attributes: ["language"], group: ["language"] });
   await cache.set(key, languages, TTL_LONG);
-  logger.info("Cached languages", { requestId });
+  // logger.info("Cached languages", { requestId });
   return languages;
 }
 
@@ -46,7 +46,7 @@ async function getProfessions(requestId) {
 
   const professions = await Person.findAll({ attributes: ["primaryProfession"], group: ["primaryProfession"] });
   await cache.set(key, professions, TTL_MEDIUM);
-  logger.info("Cached professions", { requestId });
+  // logger.info("Cached professions", { requestId });
   return professions;
 }
 
@@ -57,7 +57,7 @@ async function getTopMovies(requestId) {
 
   const movies = await Movie.findAll({ order: [["averageRating", "DESC"]], limit: 100 });
   await cache.set(key, movies, TTL_SHORT);
-  logger.info("Cached topMovies", { requestId });
+  // logger.info("Cached topMovies", { requestId });
   return movies;
 }
 

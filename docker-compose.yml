@@ -1,26 +1,27 @@
-version: '3.8'
+version: "3.8"
+
 services:
   db:
-    image: postgres:14
+    image: postgres:15
+    restart: always
     environment:
-      POSTGRES_DB: cinema_db
-      POSTGRES_USER: your_db_user
-      POSTGRES_PASSWORD: your_db_password
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_NAME}
     ports:
       - "5432:5432"
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
+
   app:
     build: .
-    environment:
-      DB_NAME: cinema_db
-      DB_USER: your_db_user
-      DB_PASS: your_db_password
-      DB_HOST: db
-      PORT: 3000
-    ports:
-      - "3000:3000"
     depends_on:
       - db
+    env_file:
+      - .env.production  # Use appropriate env file here
+    ports:
+      - "5000:5000"
+    command: npm run prod
+
 volumes:
-  db_data:
+  pgdata:

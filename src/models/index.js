@@ -8,7 +8,7 @@ const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASS, {
   logging: (msg, timing) => {
     // msg: the SQL query
     // timing: time in ms if benchmark: true
-    logger.info("Sequelize query", { sql: msg, duration: timing });
+    // logger.info("Sequelize query", { sql: msg, duration: timing });
   },
 });
 

@@ -18,7 +18,7 @@ const getMovieById = async (req, res) => {
       logger.warn("Movie not found", { requestId: req.requestId, movieId: req.params.id });
       return res.status(404).json({ error: "Movie not found" });
     } 
-    logger.info("Fetched movie", { requestId: req.requestId, movieId: req.params.id });
+    // logger.info("Fetched movie", { requestId: req.requestId, movieId: req.params.id });
     res.json(movie);
   } catch (err) {
     logger.error("Error fetching movie", { requestId: req.requestId, error: err });

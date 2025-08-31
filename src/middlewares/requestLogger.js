@@ -4,7 +4,7 @@ const logger = require("../utils/logger");
 // stream logs from morgan → winston
 const stream = {
   write: (message) => {
-    logger.info(message.trim());
+    // logger.info(message.trim());
   }
 };
 
