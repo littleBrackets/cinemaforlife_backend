@@ -6,6 +6,7 @@ const akaRoutes = require("./akaRoutes");
 const crewRoutes = require("./crewRoutes");
 const principalRoutes = require("./principalRoutes");
 const episodeRoutes = require("./episodeRoutes");
+const referenceRoutes = require("./routes/referenceRoutes");
 
 const router = express.Router();
 
@@ -16,5 +17,6 @@ router.use("/akas", akaRoutes);
 router.use("/crew", crewRoutes);
 router.use("/principals", principalRoutes);
 router.use("/episodes", episodeRoutes);
+router.use("/api/reference", referenceRoutes);
 
 module.exports = router;
