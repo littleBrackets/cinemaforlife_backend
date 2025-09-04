@@ -6,11 +6,13 @@ const requestId = require("./middlewares/requestId");
 const requestLogger = require("./middlewares/requestLogger");
 const errorHandler = require("./middlewares/errorHandler");
 
+const config = require("./config/config.js");
+
 
 const app = express();
 
 app.use(cors({
-  origin: "http://localhost:3000", // if CRA
+  origin: config.CLIENT_URL, // if CRA
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
