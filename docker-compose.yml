@@ -18,7 +18,7 @@ services:
     depends_on:
       - db
     env_file:
-      - .env.production  # Use appropriate env file here
+      - .env
     ports:
       - "8011:8011"
     command: npm run prod
